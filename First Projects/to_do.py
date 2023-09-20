@@ -2,7 +2,7 @@ import flet as ft
 
 def main(page: ft.Page):
     
-    new_task = ft.TextField(hint_text="Whats need to be done?")
+    new_task = ft.TextField(hint_text="Que tienes para hacer?")
     
     def add_clcked(e):
         """Agrega a la página un checkbox con el label del valor de 'new_task'
