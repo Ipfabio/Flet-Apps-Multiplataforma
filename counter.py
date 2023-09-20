@@ -32,6 +32,15 @@ def main(page: ft.Page):
         )
     )
     
+    for i in range(500):
+        """
+        Por 'i' en rango de 500 (0 a 499) se agregue como texto -> Line '(numero actual de 'i').
+        Luego declaramos que el scroll aparezca siempre y se actualice la "página"
+        '"""
+        page.controls.append(ft.Text(f"Line {i}"))
+    page.scroll = "always"
+    page.update()
+    
 
 ft.app(main)
 
