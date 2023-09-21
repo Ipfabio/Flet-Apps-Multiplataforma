@@ -1,0 +1,48 @@
+import flet as ft
+
+def main(page: ft.Page):
+    
+    def items(count):
+        """lista vacía de items, por el rango 1 hasta el valor que recive + 1 agregue los elementos a la lista como siguiendo los valores del contenedor y los devuelva"""
+        items = []
+        for i in range(1, count + 1):
+            items.append(
+                ft.Container(
+                    content=ft.Text(value=str(i)),
+                    alignment=ft.alignment.center,
+                    width=50,
+                    height=50,
+                    bgcolor=ft.colors.AMBER,
+                    border_radius=ft.border_radius.all(5),
+                )
+            )
+        return items
+
+    def slider_change(e):
+        """Cambia el ancho por el numero que le llega y actualiza row"""
+        row.width = float(e.control.value)
+        row.update()
+    
+
+    """Declaramos el valor minimo del slider en 0 y max el ancho de la ventana, comenzando en 0 (value) y que diga casa vez que lo movemos en cual estamos (label) y que al clickear se ejecute la función slider_change"""
+    width_slider = ft.Slider( 
+        min=0,
+        max=page.window_width,
+        divisions=20,
+        value=page.window_width,
+        label="{value}",
+        on_change=slider_change,
+    )
+
+    row = ft.Row(
+        wrap=True,
+        spacing=10,
+        run_spacing=10,
+        controls=items(100),
+        width=page.window_width,
+    )
+    
+    # gap_slider es la barra que se desliza
+    page.add(ft.Column([ft.Text("Change the row width to see how child items wrap onto multioke rows:"), width_slider]), row)
+
+ft.app(target=main)
