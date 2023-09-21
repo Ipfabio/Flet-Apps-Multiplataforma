@@ -11,7 +11,7 @@ Toda la documentación esta en: https://flet.dev/docs/cli
 # Testing Flet app on IOS y Android 
 
 `flet run --ios counter.py` | `flet run --android counter.py`
-Esto genera un código QR
+Esto genera un código QR para descargar su aplicación y probarla en dispositivos móviles
 
 # Packaging desktop app
 
