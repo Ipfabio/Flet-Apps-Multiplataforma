@@ -10,11 +10,11 @@ Toda la documentación esta en: https://flet.dev/docs/cli
 
 # Testing Flet app on IOS y Android 
 
--> flet run --ios counter.py | flet run --android counter.py
+-> `flet run --ios counter.py` | `flet run --android counter.py`
 Esto genera un código QR
 
 # Packaging desktop app
 
--> pip install pyinstaller
+-> `pip install pyinstaller`
 
--> flet pack your_program.py
+-> `flet pack your_program.py`
