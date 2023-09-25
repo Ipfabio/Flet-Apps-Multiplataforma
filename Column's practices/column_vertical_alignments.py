@@ -1,9 +1,13 @@
 import flet as ft
 
 def main(page: ft.Page):
-    
+    """
+    Configura una página con varias columnas alineadas horizontalmente y ajusta su espaciado y contenido
+    """
     def items(count):
-        """Dibuja la cantidad de items que le indicamos"""
+        """
+        Crea y devuelve una lista de contenedores cuadrados numerados del 1 al 'count'.
+        """
         items = []
         for i in range(1, count + 1):
             items.append(
@@ -18,7 +22,9 @@ def main(page: ft.Page):
         return items
     
     def column_with_alignment(align: ft.MainAxisAlignment):
-        """Devuelve una columna con los parametros y items indicados"""
+        """
+        Devuelve una columna con elementos alineados horizontalmente según 'align'.
+        """
         return ft.Column(
             [
                 ft.Text(str(align), size=10),
