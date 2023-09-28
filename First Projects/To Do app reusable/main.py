@@ -16,8 +16,8 @@ def main(page: ft.Page):
     # app2 = TodoApp()
 
     # add application's root control to the page
-    # page.add(app1, app2)
     page.add(todo)
+    # page.add(app1, app2)
 
 
 ft.app(target=main)
