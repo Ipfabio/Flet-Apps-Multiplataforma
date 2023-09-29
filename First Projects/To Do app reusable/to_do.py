@@ -47,7 +47,7 @@ class TodoApp(ft.UserControl):
         """
         Maneja el evento de clic en el botón "Agregar tarea" y agrega una nueva tarea
         """
-        task = Task(self.new_task.value, self.task_delete)
+        task = Task(self.new_task.value, self.task_status_change, self.task_delete)
         self.tasks.controls.append(task)
         self.new_task.value = ""
         self.update()
@@ -61,6 +61,9 @@ class TodoApp(ft.UserControl):
                 or (status == "completed" and task.completed)
             )
         super().update()
+    
+    def task_status_change(self, e):
+        self.update()
     
     def tabs_changed(self, e):
         self.update()
