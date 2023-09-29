@@ -7,6 +7,7 @@ class Task(ft.UserControl):
 
     Args:
         task_name (str): El nombre de la tarea.
+        task_status_change (function): Maneja el cambio de estado (completado o no) de la tarea.
         task_delete (function): Una función que se llama al eliminar la tarea.
 
     Methods:
@@ -23,6 +24,7 @@ class Task(ft.UserControl):
         self.task_delete = task_delete
 
     def build(self):
+        # Construye la interfaz de usuario para representar una tarea de la lista
         self.display_task = ft.Checkbox(value=False, label=self.task_name, on_change= self.status_change)
         self.edit_name = ft.TextField(expand=1)
 
@@ -80,7 +82,6 @@ class Task(ft.UserControl):
         self.update()
 
     def status_change(self, e):
-        # Maneja el cambio de estado (completado o no) de la tarea.
         self.completed = self.display_task.value
         self.task_status_change(self)
 
