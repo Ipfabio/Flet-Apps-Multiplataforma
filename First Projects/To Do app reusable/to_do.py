@@ -13,13 +13,16 @@ class TodoApp(ft.UserControl):
         """
         self.new_task = ft.TextField(hint_text="Que hay que hacer?", expand=True)
         self.tasks = ft.Column()
-        
+
         self.filter = ft.Tabs(
             selected_index=0,
-            on_change= self.tabs_changed,
-            tabs=[ft.Tab(text="all"), ft.Tab(text="active"), ft.Tab(text="completed"),]
+            on_change=self.tabs_changed,
+            tabs=[
+                ft.Tab(text="all"),
+                ft.Tab(text="active"),
+                ft.Tab(text="completed"),
+            ],
         )
-        
 
         # Applcations's root control (i.e. "view") containing all other controls
         return ft.Column(
@@ -38,8 +41,8 @@ class TodoApp(ft.UserControl):
                     controls=[
                         self.filter,
                         self.tasks,
-                    ]
-                )
+                    ],
+                ),
             ],
         )
 
@@ -51,8 +54,9 @@ class TodoApp(ft.UserControl):
         self.tasks.controls.append(task)
         self.new_task.value = ""
         self.update()
-        
+
     def update(self):
+        # Actualiza la visibilidad de las tareas según el estado seleccionado (all, active, completed)
         status = self.filter.tabs[self.filter.selected_index].text
         for task in self.tasks.controls:
             task.visible = (
@@ -61,14 +65,16 @@ class TodoApp(ft.UserControl):
                 or (status == "completed" and task.completed)
             )
         super().update()
-    
+
     def task_status_change(self, e):
+        # Maneja el cambio de estado de una tarea (all, active, completed) y llama a `update`
         self.update()
-    
+
     def tabs_changed(self, e):
-        # `status_change`: Maneja el cambio de estado (completo o no) de la tarea.
+        # Maneja el cambio de pestañas (all, active, completed) y llama `update`
         self.update()
 
     def task_delete(self, task):
+        # Elimina una tarea de la lista y llama `update`
         self.tasks.controls.remove(task)
         self.update()

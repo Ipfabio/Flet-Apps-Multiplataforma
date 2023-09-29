@@ -15,7 +15,7 @@ class Task(ft.UserControl):
         save_clicked: Maneja el evento de guardado de la tarea editada.
         delete_clicked: Maneja el evento de eliminación de la tarea.
     """
-    
+
     def __init__(self, task_name, task_status_change, task_delete):
         super().__init__()
         self.completed = False
@@ -25,7 +25,9 @@ class Task(ft.UserControl):
 
     def build(self):
         # Construye la interfaz de usuario para representar una tarea de la lista
-        self.display_task = ft.Checkbox(value=False, label=self.task_name, on_change= self.status_change)
+        self.display_task = ft.Checkbox(
+            value=False, label=self.task_name, on_change=self.status_change
+        )
         self.edit_name = ft.TextField(expand=1)
 
         self.display_view = ft.Row(
@@ -82,6 +84,7 @@ class Task(ft.UserControl):
         self.update()
 
     def status_change(self, e):
+        # status_change: Maneja el cambio de estado (completo o no) de la tarea.
         self.completed = self.display_task.value
         self.task_status_change(self)
 
