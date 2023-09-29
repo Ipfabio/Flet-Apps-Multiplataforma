@@ -15,13 +15,15 @@ class Task(ft.UserControl):
         delete_clicked: Maneja el evento de eliminación de la tarea.
     """
     
-    def __init__(self, task_name, task_delete):
+    def __init__(self, task_name, task_status_change, task_delete):
         super().__init__()
+        self.completed = False
         self.task_name = task_name
+        self.task_status_change = task_status_change
         self.task_delete = task_delete
 
     def build(self):
-        self.display_task = ft.Checkbox(value=False, label=self.task_name)
+        self.display_task = ft.Checkbox(value=False, label=self.task_name, on_change= self.status_change)
         self.edit_name = ft.TextField(expand=1)
 
         self.display_view = ft.Row(
@@ -74,6 +76,10 @@ class Task(ft.UserControl):
         self.display_view.visible = True
         self.edit_view.visible = False
         self.update()
+
+    def status_change(self, e):
+        self.completed = self.display_task.value
+        self.task_status_change(self)
 
     def delete_clicked(self, e):
         self.task_delete(self)
