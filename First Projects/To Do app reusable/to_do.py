@@ -66,6 +66,7 @@ class TodoApp(ft.UserControl):
         self.update()
     
     def tabs_changed(self, e):
+        # `status_change`: Maneja el cambio de estado (completo o no) de la tarea.
         self.update()
 
     def task_delete(self, task):
