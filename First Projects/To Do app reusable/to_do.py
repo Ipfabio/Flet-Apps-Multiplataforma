@@ -61,7 +61,6 @@ class TodoApp(ft.UserControl):
                 ),
             ],
         )
-    
 
     def add_clicked(self, e):
         """
@@ -73,12 +72,17 @@ class TodoApp(ft.UserControl):
         self.update()
 
     def clear_clicked(self, e):
+        """
+        Elimina las tareas completadas al hacer clic en "Limpiar completadas".
+        """
         for task in self.tasks.controls[:]:
             if task.completed:
                 self.task_delete(task)
-                
+
     def update(self):
-        # Actualiza la visibilidad de las tareas según el estado seleccionado (all, active, completed)
+        """
+        Actualiza la visibilidad de las tareas según el estado seleccionado (todos, activos, completados).
+        """
         status = self.filter.tabs[self.filter.selected_index].text
         count = 0
         for task in self.tasks.controls:
@@ -89,18 +93,24 @@ class TodoApp(ft.UserControl):
             )
             if not task.completed:
                 count += 1
-            self.items_left.value = f'{count} active item(s) left'
+            self.items_left.value = f"{count} active item(s) left"
         super().update()
 
     def task_status_change(self, e):
-        # Maneja el cambio de estado de una tarea (all, active, completed) y llama a `update`
+        """
+        Maneja el cambio de estado de una tarea y llama a `update`.
+        """
         self.update()
 
     def tabs_changed(self, e):
-        # Maneja el cambio de pestañas (all, active, completed) y llama `update`
+        """
+        Maneja el cambio de pestañas (todos, activos, completados) y llama a `update`.
+        """
         self.update()
 
     def task_delete(self, task):
-        # Elimina una tarea de la lista y llama `update`
+        """
+        Elimina una tarea de la lista y llama a `update`.
+        """
         self.tasks.controls.remove(task)
         self.update()
