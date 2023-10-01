@@ -70,24 +70,24 @@ class Task(ft.UserControl):
         return ft.Column(controls=[self.display_view, self.edit_view])
 
     def edit_clicked(self, e):
-        # Maneja la edición de las tareas
+        # Maneja el evento de edición de la tarea.
         self.edit_name.value = self.display_task.label
         self.display_view.visible = False
         self.edit_view.visible = True
         self.update()
 
     def save_clicked(self, e):
-        # Se encarga de guardar la tarea editada
+        # Maneja el evento de guardado de la tarea editada.
         self.display_task.label = self.edit_name.value
         self.display_view.visible = True
         self.edit_view.visible = False
         self.update()
 
     def status_change(self, e):
-        # status_change: Maneja el cambio de estado (completo o no) de la tarea.
+        # Maneja el cambio de estado (completo o no) de la tarea.
         self.completed = self.display_task.value
         self.task_status_change(self)
 
     def delete_clicked(self, e):
-        # Elimina la tarea
+        # Maneja el evento de eliminación de la tarea.
         self.task_delete(self)
