@@ -1,7 +1,7 @@
 import flet as ft
 
 def main(page: ft.Page):
-    
+    """Crea un ejemplo sencillo de NavigationBar en una aplicación Flet."""
     page.title = "NavitationBar Example"
     page.navigation_bar = ft.NavigationBar(
         destinations=[
