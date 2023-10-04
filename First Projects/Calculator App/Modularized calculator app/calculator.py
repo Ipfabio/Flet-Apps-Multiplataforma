@@ -241,7 +241,7 @@ class CalculatorApp(ft.UserControl):
                 self.result.value = str(
                     self.format_number(abs(float(self.result.value)))
                 )
-                self.update()
+        self.update()
 
     def format_number(self, num):
         if num % 1 == 0:
